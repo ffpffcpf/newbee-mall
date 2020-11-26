@@ -13,7 +13,9 @@ import ltd.newbee.mall.interceptor.AdminLoginInterceptor;
 import ltd.newbee.mall.interceptor.NewBeeMallCartNumberInterceptor;
 import ltd.newbee.mall.interceptor.NewBeeMallLoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -63,4 +65,10 @@ public class NeeBeeMallWebMvcConfigurer implements WebMvcConfigurer {
         registry.addResourceHandler("/upload/**").addResourceLocations("file:" + Constants.FILE_UPLOAD_DIC);
         registry.addResourceHandler("/goods-img/**").addResourceLocations("file:" + Constants.FILE_UPLOAD_DIC);
     }
+
+    @Bean
+    public LocaleResolver getLocaleResolver() {
+        return new MyLocaleResolver();
+    }
+
 }
