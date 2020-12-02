@@ -103,7 +103,7 @@ public class NewBeeMallGoodsCategoryController {
     @ResponseBody
     public Result save(@RequestBody GoodsCategory goodsCategory) {
         if (Objects.isNull(goodsCategory.getCategoryLevel())
-                || StringUtils.isEmpty(goodsCategory.getCategoryName())
+                || StringUtils.isEmpty(goodsCategory.getCategoryNameZh())
                 || Objects.isNull(goodsCategory.getParentId())
                 || Objects.isNull(goodsCategory.getCategoryRank())) {
             return ResultGenerator.genFailResult("参数异常！");
@@ -125,7 +125,7 @@ public class NewBeeMallGoodsCategoryController {
     public Result update(@RequestBody GoodsCategory goodsCategory) {
         if (Objects.isNull(goodsCategory.getCategoryId())
                 || Objects.isNull(goodsCategory.getCategoryLevel())
-                || StringUtils.isEmpty(goodsCategory.getCategoryName())
+                || StringUtils.isEmpty(goodsCategory.getCategoryNameZh())
                 || Objects.isNull(goodsCategory.getParentId())
                 || Objects.isNull(goodsCategory.getCategoryRank())) {
             return ResultGenerator.genFailResult("参数异常！");

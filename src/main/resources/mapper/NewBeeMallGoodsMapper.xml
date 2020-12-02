@@ -10,8 +10,8 @@
         <result column="goods_category_id" jdbcType="BIGINT" property="goodsCategoryId"/>
         <result column="goods_cover_img" jdbcType="VARCHAR" property="goodsCoverImg"/>
         <result column="goods_carousel" jdbcType="VARCHAR" property="goodsCarousel"/>
-        <result column="original_price" jdbcType="INTEGER" property="originalPrice"/>
-        <result column="selling_price" jdbcType="INTEGER" property="sellingPrice"/>
+        <result column="original_price" jdbcType="DECIMAL" property="originalPrice"/>
+        <result column="selling_price" jdbcType="DECIMAL" property="sellingPrice"/>
         <result column="stock_num" jdbcType="INTEGER" property="stockNum"/>
         <result column="tag" jdbcType="VARCHAR" property="tag"/>
         <result column="goods_sell_status" jdbcType="TINYINT" property="goodsSellStatus"/>
@@ -309,10 +309,10 @@
                 goods_carousel = #{goodsCarousel,jdbcType=VARCHAR},
             </if>
             <if test="originalPrice != null">
-                original_price = #{originalPrice,jdbcType=INTEGER},
+                original_price = #{originalPrice,jdbcType=DECIMAL},
             </if>
             <if test="sellingPrice != null">
-                selling_price = #{sellingPrice,jdbcType=INTEGER},
+                selling_price = #{sellingPrice,jdbcType=DECIMAL},
             </if>
             <if test="stockNum != null">
                 stock_num = #{stockNum,jdbcType=INTEGER},

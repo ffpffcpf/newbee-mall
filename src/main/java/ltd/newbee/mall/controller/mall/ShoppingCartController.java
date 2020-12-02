@@ -32,7 +32,7 @@ public class ShoppingCartController {
     @Resource
     private NewBeeMallShoppingCartService newBeeMallShoppingCartService;
 
-    @GetMapping("/shop-cart")
+    /*@GetMapping("/shop-cart")
     public String cartListPage(HttpServletRequest request,
                                HttpSession httpSession) {
         NewBeeMallUserVO user = (NewBeeMallUserVO) httpSession.getAttribute(Constants.MALL_USER_SESSION_KEY);
@@ -57,7 +57,7 @@ public class ShoppingCartController {
         request.setAttribute("priceTotal", priceTotal);
         request.setAttribute("myShoppingCartItems", myShoppingCartItems);
         return "mall/cart";
-    }
+    }*/
 
     @PostMapping("/shop-cart")
     @ResponseBody
@@ -105,7 +105,7 @@ public class ShoppingCartController {
         return ResultGenerator.genFailResult(ServiceResultEnum.OPERATE_ERROR.getResult());
     }
 
-    @GetMapping("/shop-cart/settle")
+    /*@GetMapping("/shop-cart/settle")
     public String settlePage(HttpServletRequest request,
                              HttpSession httpSession) {
         int priceTotal = 0;
@@ -126,5 +126,5 @@ public class ShoppingCartController {
         request.setAttribute("priceTotal", priceTotal);
         request.setAttribute("myShoppingCartItems", myShoppingCartItems);
         return "mall/order-settle";
-    }
+    }*/
 }

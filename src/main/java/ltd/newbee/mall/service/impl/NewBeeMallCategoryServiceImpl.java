@@ -46,7 +46,7 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
 
     @Override
     public String saveCategory(GoodsCategory goodsCategory) {
-        GoodsCategory temp = goodsCategoryMapper.selectByLevelAndName(goodsCategory.getCategoryLevel(), goodsCategory.getCategoryName());
+        GoodsCategory temp = goodsCategoryMapper.selectByLevelAndName(goodsCategory.getCategoryLevel(), goodsCategory.getCategoryNameZh());
         if (temp != null) {
             return ServiceResultEnum.SAME_CATEGORY_EXIST.getResult();
         }
@@ -62,7 +62,7 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
         if (temp == null) {
             return ServiceResultEnum.DATA_NOT_EXIST.getResult();
         }
-        GoodsCategory temp2 = goodsCategoryMapper.selectByLevelAndName(goodsCategory.getCategoryLevel(), goodsCategory.getCategoryName());
+        GoodsCategory temp2 = goodsCategoryMapper.selectByLevelAndName(goodsCategory.getCategoryLevel(), goodsCategory.getCategoryNameZh());
         if (temp2 != null && !temp2.getCategoryId().equals(goodsCategory.getCategoryId())) {
             //同名且不同id 不能继续修改
             return ServiceResultEnum.SAME_CATEGORY_EXIST.getResult();
@@ -151,8 +151,8 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
             if (secondLevelGoodsCategory != null && secondLevelGoodsCategory.getCategoryLevel() == NewBeeMallCategoryLevelEnum.LEVEL_TWO.getLevel()) {
                 //获取当前二级分类下的三级分类List
                 List<GoodsCategory> thirdLevelCategories = goodsCategoryMapper.selectByLevelAndParentIdsAndNumber(Collections.singletonList(secondLevelGoodsCategory.getCategoryId()), NewBeeMallCategoryLevelEnum.LEVEL_THREE.getLevel(), Constants.SEARCH_CATEGORY_NUMBER);
-                searchPageCategoryVO.setCurrentCategoryName(thirdLevelGoodsCategory.getCategoryName());
-                searchPageCategoryVO.setSecondLevelCategoryName(secondLevelGoodsCategory.getCategoryName());
+                searchPageCategoryVO.setCurrentCategoryName(thirdLevelGoodsCategory.getCategoryNameZh());
+                searchPageCategoryVO.setSecondLevelCategoryName(secondLevelGoodsCategory.getCategoryNameZh());
                 searchPageCategoryVO.setThirdLevelCategoryList(thirdLevelCategories);
                 return searchPageCategoryVO;
             }

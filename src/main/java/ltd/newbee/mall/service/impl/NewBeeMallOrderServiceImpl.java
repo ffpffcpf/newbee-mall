@@ -183,6 +183,11 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
     }
 
     @Override
+    public String saveOrder(NewBeeMallUserVO user, List<NewBeeMallShoppingCartItemVO> myShoppingCartItems) {
+        return null;
+    }
+
+    /*@Override
     @Transactional
     public String saveOrder(NewBeeMallUserVO user, List<NewBeeMallShoppingCartItemVO> myShoppingCartItems) {
         List<Long> itemIdList = myShoppingCartItems.stream().map(NewBeeMallShoppingCartItemVO::getCartItemId).collect(Collectors.toList());
@@ -194,7 +199,7 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
                 .collect(Collectors.toList());
         if (!CollectionUtils.isEmpty(goodsListNotSelling)) {
             //goodsListNotSelling 对象非空则表示有下架商品
-            NewBeeMallException.fail(goodsListNotSelling.get(0).getGoodsName() + "已下架，无法生成订单");
+            NewBeeMallException.fail(goodsListNotSelling.get(0).getGoodsNameZh() + "已下架，无法生成订单");
         }
         Map<Long, NewBeeMallGoods> newBeeMallGoodsMap = newBeeMallGoods.stream().collect(Collectors.toMap(NewBeeMallGoods::getGoodsId, Function.identity(), (entity1, entity2) -> entity1));
         //判断商品库存
@@ -260,7 +265,7 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
         }
         NewBeeMallException.fail(ServiceResultEnum.SHOPPING_ITEM_ERROR.getResult());
         return ServiceResultEnum.SHOPPING_ITEM_ERROR.getResult();
-    }
+    }*/
 
     @Override
     public NewBeeMallOrderDetailVO getOrderDetailByOrderNo(String orderNo, Long userId) {

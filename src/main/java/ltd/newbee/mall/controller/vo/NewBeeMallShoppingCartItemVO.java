@@ -9,6 +9,7 @@
 package ltd.newbee.mall.controller.vo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 购物车页面购物项VO
@@ -25,7 +26,7 @@ public class NewBeeMallShoppingCartItemVO implements Serializable {
 
     private String goodsCoverImg;
 
-    private Integer sellingPrice;
+    private BigDecimal sellingPrice;
 
     public Long getGoodsId() {
         return goodsId;
@@ -51,11 +52,11 @@ public class NewBeeMallShoppingCartItemVO implements Serializable {
         this.goodsCoverImg = goodsCoverImg;
     }
 
-    public Integer getSellingPrice() {
+    public BigDecimal getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(Integer sellingPrice) {
+    public void setSellingPrice(BigDecimal sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
