@@ -39,7 +39,7 @@
         selling_price, stock_num)
         VALUES
         <foreach collection="newBeeMallGoodsList" item="goods" separator=",">
-            (#{goods.goodsName},#{goods.goodsIntro},#{goods.goodsCategoryId},#{goods.goodsCoverImg},#{goods.goodsCarousel},#{goods.goodsDetailContent},#{goods.originalPrice},#{goods.sellingPrice},#{goods.stockNum})
+            (#{goods.goodsNameZh},#{goods.goodsIntro},#{goods.goodsCategoryId},#{goods.goodsCoverImg},#{goods.goodsCarousel},#{goods.goodsDetailContentZh},#{goods.originalPrice},#{goods.sellingPrice},#{goods.stockNum})
         </foreach>
     </insert>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
@@ -68,8 +68,8 @@
         <include refid="Base_Column_List"/>
         from tb_newbee_mall_goods_info
         <where>
-            <if test="goodsName!=null and goodsName!=''">
-                and goods_name like CONCAT('%','#{goodsName}','%')
+            <if test="goodsNameZh!=null and goodsNameZh!=''">
+                and goods_name like CONCAT('%','#{goodsNameZh}','%')
             </if>
             <if test="goodsSellStatus!=null and goodsSellStatus!=''">
                 and goods_sell_status = #{goodsSellStatus}
@@ -155,8 +155,8 @@
     <select id="getTotalNewBeeMallGoods" parameterType="Map" resultType="int">
         select count(*) from tb_newbee_mall_goods_info
         <where>
-            <if test="goodsName!=null and goodsName!=''">
-                and goods_name like CONCAT('%','#{goodsName}','%')
+            <if test="goodsNameZh!=null and goodsNameZh!=''">
+                and goods_name like CONCAT('%','#{goodsNameZh}','%')
             </if>
             <if test="goodsSellStatus!=null and goodsSellStatus!=''">
                 and goods_sell_status = #{goodsSellStatus}
@@ -180,11 +180,11 @@
       goods_sell_status, create_user, create_time, 
       update_user, update_time, goods_detail_content
       )
-    values (#{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsIntro,jdbcType=VARCHAR}, 
+    values (#{goodsId,jdbcType=BIGINT}, #{goodsNameZh,jdbcType=VARCHAR}, #{goodsIntro,jdbcType=VARCHAR}, 
       #{goodsCoverImg,jdbcType=VARCHAR}, #{goodsCarousel,jdbcType=VARCHAR}, #{originalPrice,jdbcType=INTEGER}, 
       #{sellingPrice,jdbcType=INTEGER}, #{stockNum,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, 
       #{goodsSellStatus,jdbcType=TINYINT}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{goodsDetailContent,jdbcType=LONGVARCHAR}
+      #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{goodsDetailContentZh,jdbcType=LONGVARCHAR}
       )
   </insert>
     <insert id="insertSelective" parameterType="ltd.newbee.mall.entity.NewBeeMallGoods">
@@ -193,8 +193,8 @@
             <if test="goodsId != null">
                 goods_id,
             </if>
-            <if test="goodsName != null">
-                goods_name,
+            <if test="goodsNameZh != null">
+                goods_name_zh,
             </if>
             <if test="goodsIntro != null">
                 goods_intro,
@@ -235,16 +235,16 @@
             <if test="updateTime != null">
                 update_time,
             </if>
-            <if test="goodsDetailContent != null">
-                goods_detail_content,
+            <if test="goodsDetailContentZh != null">
+                goods_detail_content_zh,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="goodsId != null">
                 #{goodsId,jdbcType=BIGINT},
             </if>
-            <if test="goodsName != null">
-                #{goodsName,jdbcType=VARCHAR},
+            <if test="goodsNameZh != null">
+                #{goodsNameZh,jdbcType=VARCHAR},
             </if>
             <if test="goodsIntro != null">
                 #{goodsIntro,jdbcType=VARCHAR},
@@ -285,16 +285,16 @@
             <if test="updateTime != null">
                 #{updateTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="goodsDetailContent != null">
-                #{goodsDetailContent,jdbcType=LONGVARCHAR},
+            <if test="goodsDetailContentZh != null">
+                #{goodsDetailContentZh,jdbcType=LONGVARCHAR},
             </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="ltd.newbee.mall.entity.NewBeeMallGoods">
         update tb_newbee_mall_goods_info
         <set>
-            <if test="goodsName != null">
-                goods_name = #{goodsName,jdbcType=VARCHAR},
+            <if test="goodsNameZh != null">
+                goods_name = #{goodsNameZh,jdbcType=VARCHAR},
             </if>
             <if test="goodsIntro != null">
                 goods_intro = #{goodsIntro,jdbcType=VARCHAR},
@@ -335,15 +335,15 @@
             <if test="updateTime != null">
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="goodsDetailContent != null">
-                goods_detail_content = #{goodsDetailContent,jdbcType=LONGVARCHAR},
+            <if test="goodsDetailContentZh != null">
+                goods_detail_content = #{goodsDetailContentZh,jdbcType=LONGVARCHAR},
             </if>
         </set>
         where goods_id = #{goodsId,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="ltd.newbee.mall.entity.NewBeeMallGoods">
     update tb_newbee_mall_goods_info
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
+    set goods_name = #{goodsNameZh,jdbcType=VARCHAR},
       goods_intro = #{goodsIntro,jdbcType=VARCHAR},
       goods_cover_img = #{goodsCoverImg,jdbcType=VARCHAR},
       goods_carousel = #{goodsCarousel,jdbcType=VARCHAR},
@@ -356,12 +356,12 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      goods_detail_content = #{goodsDetailContent,jdbcType=LONGVARCHAR}
+      goods_detail_content = #{goodsDetailContentZh,jdbcType=LONGVARCHAR}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
     <update id="updateByPrimaryKey" parameterType="ltd.newbee.mall.entity.NewBeeMallGoods">
     update tb_newbee_mall_goods_info
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
+    set goods_name = #{goodsNameZh,jdbcType=VARCHAR},
       goods_intro = #{goodsIntro,jdbcType=VARCHAR},
       goods_cover_img = #{goodsCoverImg,jdbcType=VARCHAR},
       goods_carousel = #{goodsCarousel,jdbcType=VARCHAR},
