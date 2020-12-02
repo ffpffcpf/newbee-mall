@@ -5,7 +5,9 @@
         <id column="category_id" jdbcType="BIGINT" property="categoryId"/>
         <result column="category_level" jdbcType="TINYINT" property="categoryLevel"/>
         <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
-        <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="category_name_zh" jdbcType="VARCHAR" property="categoryNameZh"/>
+        <result column="category_name_en" jdbcType="VARCHAR" property="categoryNameEn"/>
+        <result column="category_name_ca" jdbcType="VARCHAR" property="categoryNameCa"/>
         <result column="category_rank" jdbcType="INTEGER" property="categoryRank"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>

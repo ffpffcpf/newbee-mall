@@ -9,13 +9,17 @@
 package ltd.newbee.mall.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 public class NewBeeMallGoods {
     private Long goodsId;
 
-    private String goodsName;
+    private String goodsNameZh;
+    private String goodsNameEn;
+    private String goodsNameCa;
 
     private String goodsIntro;
 
@@ -45,134 +49,46 @@ public class NewBeeMallGoods {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
-    private String goodsDetailContent;
+    private String goodsDetailContentZh;
+    private String goodsDetailContentEn;
+    private String goodsDetailContentCa;
 
-    public Long getGoodsId() {
-        return goodsId;
+
+    public void setGoodsNameZh(String goodsName) {
+        this.goodsNameZh = goodsName == null ? null : goodsName.trim();
+    }
+    public void setGoodsNameEn(String goodsName) {
+        this.goodsNameEn = goodsName == null ? null : goodsName.trim();
+    }
+    public void setGoodsNameCa(String goodsName) {
+        this.goodsNameCa = goodsName == null ? null : goodsName.trim();
     }
 
-    public void setGoodsId(Long goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName == null ? null : goodsName.trim();
-    }
-
-    public String getGoodsIntro() {
-        return goodsIntro;
-    }
 
     public void setGoodsIntro(String goodsIntro) {
         this.goodsIntro = goodsIntro == null ? null : goodsIntro.trim();
-    }
-
-    public Long getGoodsCategoryId() {
-        return goodsCategoryId;
-    }
-
-    public void setGoodsCategoryId(Long goodsCategoryId) {
-        this.goodsCategoryId = goodsCategoryId;
-    }
-
-    public String getGoodsCoverImg() {
-        return goodsCoverImg;
     }
 
     public void setGoodsCoverImg(String goodsCoverImg) {
         this.goodsCoverImg = goodsCoverImg == null ? null : goodsCoverImg.trim();
     }
 
-    public String getGoodsCarousel() {
-        return goodsCarousel;
-    }
-
     public void setGoodsCarousel(String goodsCarousel) {
         this.goodsCarousel = goodsCarousel == null ? null : goodsCarousel.trim();
-    }
-
-    public Integer getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public void setOriginalPrice(Integer originalPrice) {
-        this.originalPrice = originalPrice;
-    }
-
-    public Integer getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public void setSellingPrice(Integer sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
-
-    public Integer getStockNum() {
-        return stockNum;
-    }
-
-    public void setStockNum(Integer stockNum) {
-        this.stockNum = stockNum;
-    }
-
-    public String getTag() {
-        return tag;
     }
 
     public void setTag(String tag) {
         this.tag = tag == null ? null : tag.trim();
     }
 
-    public Byte getGoodsSellStatus() {
-        return goodsSellStatus;
+    public void setGoodsDetailContentZh(String goodsDetailContent) {
+        this.goodsDetailContentZh = goodsDetailContent == null ? null : goodsDetailContent.trim();
     }
-
-    public void setGoodsSellStatus(Byte goodsSellStatus) {
-        this.goodsSellStatus = goodsSellStatus;
+    public void setGoodsDetailContentEn(String goodsDetailContent) {
+        this.goodsDetailContentEn = goodsDetailContent == null ? null : goodsDetailContent.trim();
     }
-
-    public Integer getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getGoodsDetailContent() {
-        return goodsDetailContent;
-    }
-
-    public void setGoodsDetailContent(String goodsDetailContent) {
-        this.goodsDetailContent = goodsDetailContent == null ? null : goodsDetailContent.trim();
+    public void setGoodsDetailContentCa(String goodsDetailContent) {
+        this.goodsDetailContentCa = goodsDetailContent == null ? null : goodsDetailContent.trim();
     }
 
     @Override
@@ -182,7 +98,9 @@ public class NewBeeMallGoods {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", goodsId=").append(goodsId);
-        sb.append(", goodsName=").append(goodsName);
+        sb.append(", goodsNameZh=").append(goodsNameZh);
+        sb.append(", goodsNameEn=").append(goodsNameEn);
+        sb.append(", goodsNameCa=").append(goodsNameCa);
         sb.append(", goodsIntro=").append(goodsIntro);
         sb.append(", goodsCoverImg=").append(goodsCoverImg);
         sb.append(", goodsCarousel=").append(goodsCarousel);
@@ -195,7 +113,9 @@ public class NewBeeMallGoods {
         sb.append(", createTime=").append(createTime);
         sb.append(", updateUser=").append(updateUser);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", goodsDetailContent=").append(goodsDetailContent);
+        sb.append(", goodsDetailContentZh=").append(goodsDetailContentZh);
+        sb.append(", goodsDetailContentEn=").append(goodsDetailContentEn);
+        sb.append(", goodsDetailContentCa=").append(goodsDetailContentCa);
         sb.append("]");
         return sb.toString();
     }

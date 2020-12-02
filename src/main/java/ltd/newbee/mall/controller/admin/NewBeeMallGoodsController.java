@@ -148,7 +148,7 @@ public class NewBeeMallGoodsController {
     @RequestMapping(value = "/goods/save", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody NewBeeMallGoods newBeeMallGoods) {
-        if (StringUtils.isEmpty(newBeeMallGoods.getGoodsName())
+        if (StringUtils.isEmpty(newBeeMallGoods.getGoodsNameZh())
                 || StringUtils.isEmpty(newBeeMallGoods.getGoodsIntro())
                 || StringUtils.isEmpty(newBeeMallGoods.getTag())
                 || Objects.isNull(newBeeMallGoods.getOriginalPrice())
@@ -157,7 +157,7 @@ public class NewBeeMallGoodsController {
                 || Objects.isNull(newBeeMallGoods.getStockNum())
                 || Objects.isNull(newBeeMallGoods.getGoodsSellStatus())
                 || StringUtils.isEmpty(newBeeMallGoods.getGoodsCoverImg())
-                || StringUtils.isEmpty(newBeeMallGoods.getGoodsDetailContent())) {
+                || StringUtils.isEmpty(newBeeMallGoods.getGoodsDetailContentZh())) {
             return ResultGenerator.genFailResult("参数异常！");
         }
         String result = newBeeMallGoodsService.saveNewBeeMallGoods(newBeeMallGoods);
@@ -176,7 +176,7 @@ public class NewBeeMallGoodsController {
     @ResponseBody
     public Result update(@RequestBody NewBeeMallGoods newBeeMallGoods) {
         if (Objects.isNull(newBeeMallGoods.getGoodsId())
-                || StringUtils.isEmpty(newBeeMallGoods.getGoodsName())
+                || StringUtils.isEmpty(newBeeMallGoods.getGoodsNameZh())
                 || StringUtils.isEmpty(newBeeMallGoods.getGoodsIntro())
                 || StringUtils.isEmpty(newBeeMallGoods.getTag())
                 || Objects.isNull(newBeeMallGoods.getOriginalPrice())
@@ -185,7 +185,7 @@ public class NewBeeMallGoodsController {
                 || Objects.isNull(newBeeMallGoods.getStockNum())
                 || Objects.isNull(newBeeMallGoods.getGoodsSellStatus())
                 || StringUtils.isEmpty(newBeeMallGoods.getGoodsCoverImg())
-                || StringUtils.isEmpty(newBeeMallGoods.getGoodsDetailContent())) {
+                || StringUtils.isEmpty(newBeeMallGoods.getGoodsDetailContentZh())) {
             return ResultGenerator.genFailResult("参数异常！");
         }
         String result = newBeeMallGoodsService.updateNewBeeMallGoods(newBeeMallGoods);
